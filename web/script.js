@@ -1,12 +1,33 @@
 
-let allEmployees = []
+let allEmployees = [
+    {
+        firstName: "Taco",
+        lastName: "Cat",
+        id: "123",
+        title: "Engineering Manager",
+        annualSalary: "$170,000.00"
+    },
+    {
+        firstName: "Hot",
+        lastName: "Dog",
+        id: "456",
+        title: "Sr. Engineer",
+        annualSalary: "$145,000.00"
+    },
+    {
+        firstName: "Rug",
+        lastName: "Rat",
+        id: "789",
+        title: "Associate Engineer",
+        annualSalary: "$120,000.00"
+    }
+]
 
 function addEmployeeSubmitHandler() {
     console.log("addEmployee")
     addEmployee()
     updateEmployeeDataTable()
     resetAddEmployeeForm()
-    console.log("All Employees: " + JSON.stringify(allEmployees))
 }
 
 // Will add employee from form into allEmployees[] array
@@ -23,9 +44,14 @@ function addEmployee() {
     employeeToAdd.lastName = document.getElementById("lastNameInput").value
     employeeToAdd.id = document.getElementById("idInput").value
     employeeToAdd.title = document.getElementById("titleInput").value
-    employeeToAdd.annualSalary = document.getElementById("annualSalaryInput").value
 
-    console.log("employeeToAdd id: " + employeeToAdd.id)
+    // Will convert salary number to USD currency format
+    employeeToAdd.annualSalary = new Intl.NumberFormat("en-HOSSDDG",{
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+     }).format(document.getElementById("annualSalaryInput").value)
+    
 
     // Throws error if employee id is empty
     if(employeeToAdd.id == undefined || employeeToAdd.id.length < 1){
@@ -33,6 +59,7 @@ function addEmployee() {
         throw new Error("Employee ID must be a number")
     }
 
+    console.log("Success... will now add employee. (id: " + employeeToAdd.id + ")")
     allEmployees.push(employeeToAdd)
 }
 
@@ -44,7 +71,10 @@ function doesIdExist(employee){
 // Will update table to have rows, which represent array of allEmployees[]
 // This function controls what is rendered in the table
 function updateEmployeeDataTable() {
-    console.log("updating updateEmployeeDataTable: " + JSON.stringify(allEmployees))
+    console.log("Updating... All Employees now:")
+    console.group()
+    console.table(allEmployees)
+    console.groupEnd()
 
     const table = document.getElementById("employeeDataTableBody")
 
@@ -62,8 +92,14 @@ function updateEmployeeDataTable() {
         row.insertCell(1).innerHTML = employee.lastName
         row.insertCell(2).innerHTML = employee.id
         row.insertCell(3).innerHTML = employee.title
-        row.insertCell(4).innerHTML = employee.annualSalary
-        row.insertCell(5).innerHTML = `<button onclick="deleteEmployee(${employee.id})">Delete</button>`
+
+        const annualSalaryCell = row.insertCell(4)
+        annualSalaryCell.innerHTML = employee.annualSalary
+        annualSalaryCell.classList.add("annualSalaryCell")
+
+        const deleteButtOnCell = row.insertCell(5)
+        deleteButtOnCell.innerHTML = `<button class="deleteButton" onclick="deleteEmployee(${employee.id})">Delete</button>`
+        deleteButtOnCell.classList.add("deleteButtonCell")
     })
 }
 
@@ -75,9 +111,8 @@ function resetAddEmployeeForm() {
 // Will delete employee from allEmployees[], using employee's unique ID
 // Then update table to show rows for current entries in allEmployees[]
 function deleteEmployee(employeeId) {
-    console.log("Deleting Employee: " + employeeId)
+    console.log("Deleting Employee, id: " + employeeId)
     // Updates allEmployees, minus any entries that match the employeeId to be deleted
     allEmployees = allEmployees.filter(employee => employee.id != employeeId)
-    console.log("All Employees now: " + JSON.stringify(allEmployees))
     updateEmployeeDataTable()
 }

@@ -1,28 +1,27 @@
-
 h2 {
     font: 15px sans-serif;
 }
 
-table, tr, th, td {
+table,
+tr,
+th,
+td {
     font: 13px sans-serif;
     font-weight: lighter;
     border-collapse: collapse;
     border: 1px solid black;
 }
 
-th, td {
+th,
+td {
+    text-align: left;
     width: auto;
-    /* padding: top, right, bottom, left */
     padding: 7px 5px 7px 5px;
 }
 
 th {
     text-align: left;
     background-color: #dedede;
-}
-
-td {
-    text-align: left;
 }
 
 tr:nth-child(even) {
@@ -38,14 +37,15 @@ tr:nth-child(even) {
     white-space: nowrap;
 }
 
-.formInputs, formSubmit {
+.formInputs,
+formSubmit {
     display: inline-flex;
     text-align: right;
     gap: 4px;
 }
 
 .formSubmit {
-    display:block;
+    display: block;
     text-align: right;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -60,7 +60,7 @@ tr:nth-child(even) {
     text-align: center;
     background-color: #8a8a8a;
     padding: 15px 20px 15px 20px;
-    color: #ffffff;    
+    color: #ffffff;
 }
 
 .annualSalaryCell {

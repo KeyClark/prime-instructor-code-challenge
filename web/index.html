@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <! <![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- styles.css contains custom stylesheet for this page -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- script.js contains the javaScript code,
+        which handles adding/deleting employees -->
+    <script src="./script.js" type="text/javascript" async defer></script>
+</head>
+
+<body>
+
+    <!-- Basic javascript form to take in teacher data-->
+    <form id="addEmployeeForm">
+        <!-- Inputs are fields that intake information -->
+        <input type="text" id="firstNameInput" placeholder="First Name">
+        <input type="text" id="lastNameInput" placeholder="Last Name">
+        <input type="number" id="idInput" placeholder="ID">
+        <input type="text" id="titleInput" placeholder="Title">
+        <input type="number" id="annualSalaryInput" placeholder="Annual Salary">
+
+        <!-- button to Add data -->
+        <input type="button" id="addEmployeeFormSubmitButton" name="submit" onclick="addEmployeeSubmitHandler()"
+            value="submit">
+    </form>
+
+    <table name="employeeDataTable">
+        <!-- Table headers describe the contents of each column. -->
+        <tr name="employeeDataTableHeaders">
+            <th name="firstName">First Name</th>
+            <th name="lastName">Last Name</th>
+            <th name="id">ID</th>
+            <th name="title">Title</th>
+            <th name="annualSalary">Annual Salary</th>
+            <th name="delete"></th>
+        </tr>
+
+        <tbody id="employeeDataTableBody">
+            <!-- Table rows are populated in this area -->
+        </tbody>
+    </table>
+</body>
+
+</html>

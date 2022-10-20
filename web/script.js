@@ -48,11 +48,12 @@ function updateEmployeeDataTable() {
 
     const table = document.getElementById("employeeDataTableBody")
 
-    // Remove all rows (if any) in table
+    // Remove all rows (if any) in table before re-rendering
     table.replaceChildren()
 
     // For every employee in allEmployees[] add a table row
     allEmployees.forEach((employee) => {
+        // Create a new row, appending to the end of the table
         const row = table.insertRow(-1)
         row.dataset.employeeId = employee.id
         
@@ -66,6 +67,7 @@ function updateEmployeeDataTable() {
     })
 }
 
+// Will reset all input fields in the form
 function resetAddEmployeeForm() {
     document.getElementById("addEmployeeForm").reset()
 }

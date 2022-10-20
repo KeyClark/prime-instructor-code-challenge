@@ -13,7 +13,7 @@ table, tr, th, td {
 th, td {
     width: auto;
     /* padding: top, right, bottom, left */
-    padding: 7px 7px 7px 2px;
+    padding: 7px 5px 7px 5px;
 }
 
 th {
@@ -86,4 +86,22 @@ tr:nth-child(even) {
 
 .addEmployeeForm {
     align-content: flex-end;
+}
+
+.monthlyTotalContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font: 15px sans-serif;
+}
+
+.monthlyTotalWarning {
+    color: red;
+    font-weight: bold;
+}
+
+.monthlyTotalNormal {
+    color: black;
+    font-weight: normal;
 }

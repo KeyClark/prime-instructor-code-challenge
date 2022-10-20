@@ -4,24 +4,19 @@ let allEmployees = [
         firstName: "Taco",
         lastName: "Cat",
         id: "123",
-        title: "Engineering Manager",
-        annualSalary: "$170,000.00"
+        title: "El Gato",
+        annualSalary: "$75,000.00"
     },
     {
         firstName: "Hot",
         lastName: "Dog",
         id: "456",
-        title: "Sr. Engineer",
-        annualSalary: "$145,000.00"
-    },
-    {
-        firstName: "Rug",
-        lastName: "Rat",
-        id: "789",
-        title: "Associate Engineer",
-        annualSalary: "$120,000.00"
+        title: "Good Boy",
+        annualSalary: "$50,000.00"
     }
 ]
+
+let monthlyTotalAmt;
 
 function addEmployeeSubmitHandler() {
     console.log("addEmployee")
@@ -45,7 +40,7 @@ function addEmployee() {
     employeeToAdd.id = document.getElementById("idInput").value
     employeeToAdd.title = document.getElementById("titleInput").value
 
-    // Will convert salary number to USD currency format
+    // Will convert salary number to USD currency format before the entry is added
     employeeToAdd.annualSalary = new Intl.NumberFormat("en-HOSSDDG",{
         style: 'currency',
         currency: 'USD',
@@ -93,6 +88,7 @@ function updateEmployeeDataTable() {
         row.insertCell(2).innerHTML = employee.id
         row.insertCell(3).innerHTML = employee.title
 
+        // The last 2 cells will have special classes so they can be styles differently
         const annualSalaryCell = row.insertCell(4)
         annualSalaryCell.innerHTML = employee.annualSalary
         annualSalaryCell.classList.add("annualSalaryCell")
@@ -108,6 +104,38 @@ function updateEmployeeDataTable() {
     const cell = trailingRow.insertCell(0);
     cell.innerHTML= ""
     cell.colSpan = 6
+
+    updateTotalMonthly()
+    console.log("total monthly: " + monthlyTotalAmt)
+}
+
+function updateTotalMonthly() {
+    const monthlyTotal = document.getElementById("totalMonthlyAmount")
+    let total = 0
+
+    allEmployees.forEach(employee => {
+        // Will remove all non-numeric characters from the string
+        total += parseFloat(employee.annualSalary.replace(/[^0-9.-]+/g,""))
+    })
+
+    monthlyTotalAmt = total / 12
+
+    monthlyTotal.innerHTML = new Intl.NumberFormat("en-HOSSDDG",{
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+     }).format(monthlyTotalAmt)
+
+     // Checks if monthly total is over $20,000, and if so, will change text color to red
+        // If not, will use normal text
+     if(monthlyTotalAmt >= 20000){
+         monthlyTotal.classList.remove("monthlyTotalNormal")
+         monthlyTotal.classList.add("monthlyTotalWarning")
+     } else {
+        monthlyTotal.classList.remove("monthlyTotalWarning")
+        monthlyTotal.classList.add("monthlyTotalNormal")
+     }
+
 }
 
 // Will reset all input fields in the form

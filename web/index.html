@@ -13,6 +13,8 @@
             which handles adding/deleting employees -->
         <script src="./script.js" type="text/javascript" async defer></script>
     </head>
+
+    <!-- Will load any pre-populated data -->
     <body onload="updateEmployeeDataTable()">
         <div class="container">
             <h1 class="titleText">
@@ -62,6 +64,14 @@
                     <!-- Table rows are populated in this area -->
                 </tbody>
             </table>
+
+            <div class="monthlyTotalContainer">
+                <span style="padding-right: 5px;">
+                    Total Monthly:
+                </span>
+                <span id="totalMonthlyAmount">
+                    <!-- Total monthly salary will be displayed here -->   
+            </div>
         </div>
     </body>
 </html>

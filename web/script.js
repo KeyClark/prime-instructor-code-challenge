@@ -101,6 +101,13 @@ function updateEmployeeDataTable() {
         deleteButtOnCell.innerHTML = `<button class="deleteButton" onclick="deleteEmployee(${employee.id})">Delete</button>`
         deleteButtOnCell.classList.add("deleteButtonCell")
     })
+
+    // Trailing row at the end of the table
+    const trailingRow = table.insertRow(-1)
+    trailingRow.classList.add("trailingRow")
+    const cell = trailingRow.insertCell(0);
+    cell.innerHTML= ""
+    cell.colSpan = 6
 }
 
 // Will reset all input fields in the form

@@ -14,33 +14,54 @@
         <script src="./script.js" type="text/javascript" async defer></script>
     </head>
     <body onload="updateEmployeeDataTable()">
-        <!-- Basic javascript form to take in teacher data-->
-        <form id="addEmployeeForm">
-            <!-- Inputs are fields that intake information -->
-            <input type="text" id="firstNameInput" placeholder="First Name">
-            <input type="text" id="lastNameInput" placeholder="Last Name">
-            <input type="number" id="idInput" placeholder="ID">
-            <input type="text" id="titleInput" placeholder="Title">
-            <input type="number" id="annualSalaryInput" placeholder="Annual Salary">
+        <div class="container">
+            <h1 class="titleText">
+                Salary Calculator
+            </h1>
 
-            <!-- button to Add data -->
-            <input type="button" id="addEmployeeFormSubmitButton" name="submit" onclick="addEmployeeSubmitHandler()"
-                value="submit">
-        </form>
-        <table name="employeeDataTable">
-            <!-- Table headers describe the contents of each column. -->
-            <thead name="employeeDataTableHeaders">
-                <th name="firstName">First Name</th>
-                <th name="lastName">Last Name</th>
-                <th name="id">ID</th>
-                <th name="title">Title</th>
-                <th name="annualSalary">Annual Salary</th>
-                <th name="delete"></th>
-            </thead>
+            <!-- Basic javascript form to take in teacher data-->
+            <form id="addEmployeeForm" class="containerWidth">
+                <H2>
+                    Add Employee
+                </H2>
+                <!-- Inputs are fields that intake information -->
+                <div class="formInputs">
+                    <input type="text" id="firstNameInput" placeholder="First Name">
+                    <input type="text" id="lastNameInput" placeholder="Last Name">
+                    <input type="number" id="idInput" placeholder="ID">
+                    <input type="text" id="titleInput" placeholder="Title">
+                    <input type="number" id="annualSalaryInput" placeholder="Annual Salary">
+                </div> 
+                <!-- button to Add data -->
+                <div class="formSubmit">
+                    <input 
+                        type="button"
+                        id="addEmployeeFormSubmitButton"
+                        class="submitbutton"
+                        onclick="addEmployeeSubmitHandler()"
+                        value="submit"
+                    >
+                </div>
+            </form>
 
-            <tbody id="employeeDataTableBody">
-                <!-- Table rows are populated in this area -->
-            </tbody>
-        </table>
+            <H2>
+                Employees
+            </H2>
+            <table class="containerWidth">
+                <!-- Table headers describe the contents of each column. -->
+                <thead class="employeeDataTableHeaders">
+                    <th name="firstName">First Name</th>
+                    <th name="lastName">Last Name</th>
+                    <th name="id">ID</th>
+                    <th name="title">Title</th>
+                    <th name="annualSalary">Annual Salary</th>
+                    <th name="delete"></th>
+                </thead>
+
+                <tbody id="employeeDataTableBody">
+                    <!-- Table rows are populated in this area -->
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>

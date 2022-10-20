@@ -1,4 +1,7 @@
 
+h2 {
+    font: 15px sans-serif;
+}
 
 table, tr, th, td {
     font: 13px sans-serif;
@@ -10,32 +13,77 @@ table, tr, th, td {
 th, td {
     width: auto;
     /* padding: top, right, bottom, left */
-    padding: 7px 25px 7px 2px;
+    padding: 7px 7px 7px 2px;
 }
 
 th {
     text-align: left;
-    background-color: rgb(215, 215, 215);
+    background-color: #dedede;
 }
 
 td {
     text-align: left;
-    background-color:rgb(255, 255, 255);
 }
 
-.deleteButton {
-    font-size: 11px;
-    padding-left: 10px;
-    padding-right: 10px;
+tr:nth-child(even) {
+    background-color: #f4f4f4;
 }
 
-.deleteButtonCell {
+.container {
+    width: 600px;
+}
+
+.formInputs input {
+    width: 20%;
+    white-space: nowrap;
+}
+
+.formInputs, formSubmit {
+    display: inline-flex;
+    text-align: right;
+    gap: 4px;
+}
+
+.formSubmit {
+    display:block;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.containerWidth {
+    width: 100%;
+}
+
+.titleText {
+    font: 23px sans-serif;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
+    background-color: #8a8a8a;
+    padding: 15px 20px 15px 20px;
+    color: #ffffff;    
 }
 
 .annualSalaryCell {
     text-align: right;
     padding-right: 5px;
+}
+
+.deleteButton {
+    font-size: 11px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.deleteButtonCell {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.trailingRow {
+    height: 35px;
+}
+
+.addEmployeeForm {
+    align-content: flex-end;
 }
